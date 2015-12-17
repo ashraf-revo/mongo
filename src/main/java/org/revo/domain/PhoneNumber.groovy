@@ -1,19 +1,18 @@
 package org.revo.domain
 
+import groovy.transform.Canonical
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.DBRef
-
+import org.springframework.data.mongodb.core.mapping.Document
 
 /**
- * Created by ashraf on 12/3/2015.
+ * Created by revo on 17/12/15.
  */
-class PT {
+@Document
+class PhoneNumber {
     @Id
     String id
-    @DBRef
-    Term term
+    String phone
     @DBRef
     Person person
-    @DBRef
-    Set<PS> ps = new HashSet<>()
 }

@@ -1,24 +1,34 @@
 package org.revo
 
-import org.revo.service.SomeService
+import org.revo.Repository.PersonRepository
+import org.revo.Repository.PhoneNumberRepository
+import org.revo.Service.SomeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.data.rest.core.annotation.HandleBeforeSave
 
 @SpringBootApplication
 public class SampleMongoApplication implements CommandLineRunner {
-
     @Autowired
-    SomeService service
+    PersonRepository personRepository
+    @Autowired
+    PhoneNumberRepository phoneNumberRepository
+    @Autowired
+    SomeService someService
 
     @Override
+    @HandleBeforeSave
     public void run(String... args) throws Exception {
-        service.init()
+//        personRepository.deleteAll()
+//        phoneNumberRepository.deleteAll()
+//        someService.init()
+        personRepository.delete("56732f94e4b069b99e4d078c")
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(SampleMongoApplication.class, args);
+        SpringApplication.run SampleMongoApplication.class, args
     }
 
 }
