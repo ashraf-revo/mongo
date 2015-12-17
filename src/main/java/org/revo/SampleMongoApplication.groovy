@@ -21,10 +21,9 @@ public class SampleMongoApplication implements CommandLineRunner {
     @Override
     @HandleBeforeSave
     public void run(String... args) throws Exception {
-//        personRepository.deleteAll()
-//        phoneNumberRepository.deleteAll()
-//        someService.init()
-        personRepository.delete("56732f94e4b069b99e4d078c")
+        personRepository.deleteAll()
+        phoneNumberRepository.deleteAll()
+        someService.init()
     }
 
     public static void main(String[] args) throws Exception {

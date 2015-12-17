@@ -21,13 +21,10 @@ class Util extends AbstractMongoEventListener<Person> {
 
     @Override
     void onBeforeDelete(BeforeDeleteEvent<Person> event) {
-
-        println("*******************************************")
         String id = event.source.get("id")
         Set<PhoneNumber> numbers = personRepository.findOne(id).phoneNumberSet
         numbers.each {
             phoneNumberRepository.delete(it)
         }
-
     }
 }

@@ -30,6 +30,8 @@ class SomeServiceImpl implements SomeService {
         phoneNumberRepository.save(phoneNumber1)
         phoneNumberRepository.save(phoneNumber2)
         personRepository.save(person)
+        personRepository.delete(person)
+
     }
 
     @Override
