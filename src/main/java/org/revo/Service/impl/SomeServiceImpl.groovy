@@ -1,10 +1,8 @@
 package org.revo.Service.impl
 
-import org.revo.Repository.PersonRepository
-import org.revo.Repository.PhoneNumberRepository
+
 import org.revo.Service.SomeService
-import org.revo.domain.Person
-import org.revo.domain.PhoneNumber
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -22,6 +20,8 @@ class SomeServiceImpl implements SomeService {
 
     @Override
     void init() {
+        personRepository.deleteAll()
+        phoneNumberRepository.deleteAll()
         Person person = new Person(name: "ashraf")
         person = personRepository.save(person)
         PhoneNumber phoneNumber1 = new PhoneNumber(phone: "01120266849", person: person)
@@ -32,10 +32,5 @@ class SomeServiceImpl implements SomeService {
         personRepository.save(person)
         personRepository.delete(person)
 
-    }
-
-    @Override
-    void SaveAndDelete() {
-        personRepository.delete(personRepository.save(new Person(name: "revo")))
     }
 }
